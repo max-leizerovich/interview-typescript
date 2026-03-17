@@ -1,0 +1,6 @@
+{
+  "jest.jestCommandLine": "node ./node_modules/jest/bin/jest.js --config ./jest.config.ts",
+  "jest.rootPath": ".",
+  "jest.runMode": "on-demand"
+}
+

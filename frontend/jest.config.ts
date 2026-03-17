@@ -1,17 +1,14 @@
-/** @type {import('jest').Config} */
-module.exports = {
+import type { Config } from 'jest';
+
+const config: Config = {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
   testMatch: ['**/*.test.ts', '**/*.test.tsx'],
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
   moduleNameMapper: {
-    '\\\\.(css|less|scss|sass)$': 'identity-obj-proxy'
+    '\\.(css|less|scss|sass)$': 'identity-obj-proxy'
   },
-  collectCoverageFrom: [
-    'src/**/*.{ts,tsx}',
-    '!src/**/*.test.{ts,tsx}',
-    '!src/main.tsx'
-  ],
+  collectCoverageFrom: ['src/**/*.{ts,tsx}', '!src/**/*.test.{ts,tsx}', '!src/main.tsx'],
   coverageDirectory: 'coverage',
   coverageReporters: ['text', 'lcov'],
   coverageThreshold: {
@@ -23,4 +20,6 @@ module.exports = {
     }
   }
 };
+
+export default config;
 
