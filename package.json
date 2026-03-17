@@ -1,0 +1,33 @@
+{
+  "name": "interview-typescript",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend",
+    "shared"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "concurrently -n backend,frontend -c blue,green \"npm -w backend run dev\" \"npm -w frontend run dev\"",
+    "build": "npm --workspaces run build",
+    "typecheck": "npm --workspaces run typecheck",
+    "lint": "npm --workspaces run lint",
+    "test": "npm --workspaces run test",
+    "test:coverage": "npm --workspaces run test:coverage",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "concurrently": "^9.0.0",
+    "eslint": "^9.0.0",
+    "globals": "^15.0.0",
+    "prettier": "^3.0.0",
+    "rimraf": "^6.0.0",
+    "typescript": "^5.0.0",
+    "typescript-eslint": "^8.0.0"
+  }
+}
+
