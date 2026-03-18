@@ -1,5 +1,6 @@
 {
-  "jest.jestCommandLine": "node ./node_modules/jest/bin/jest.js --config ./jest.config.ts",
+  "jest.nodePath": "/opt/homebrew/bin/node",
+  "jest.jestCommandLine": "./node_modules/jest/bin/jest.js --config ./jest.config.ts",
   "jest.rootPath": ".",
   "jest.runMode": "on-demand"
 }
