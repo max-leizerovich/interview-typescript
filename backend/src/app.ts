@@ -4,22 +4,40 @@ import pinoHttp from 'pino-http';
 import { z } from 'zod';
 import { CreateItemSchema, type Item } from '@interview/shared';
 
+/**
+ * In-memory store used by the HTTP API.
+ */
 type Store = {
-  items: Item[];
+  readonly items: Item[];
 };
 
+/**
+ * Options for {@link createApp}.
+ */
 type AppOptions = {
-  enableTestRoutes?: boolean;
+  /**
+   * When true, registers internal routes used only by tests.
+   */
+  readonly enableTestRoutes?: boolean;
 };
 
-function nowIso() {
-  return new Date().toISOString();
-}
+/**
+ * Returns the current time as an ISO 8601 string.
+ */
+const nowIso = (): string => new Date().toISOString();
 
-function makeId() {
-  return Math.random().toString(16).slice(2);
-}
+/**
+ * Generates a short random identifier for new items and request correlation.
+ */
+const makeId = (): string => Math.random().toString(16).slice(2);
 
+/**
+ * Builds an Express application with items API, health check, and error handling.
+ *
+ * @param store - Mutable item list the handlers read and write.
+ * @param options - Optional feature flags.
+ * @returns Configured Express app (not listening).
+ */
 export function createApp(
   store: Store = { items: [] },
   options: AppOptions = {},
@@ -93,4 +111,3 @@ export function createApp(
 
   return app;
 }
-

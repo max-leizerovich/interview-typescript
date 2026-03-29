@@ -12,9 +12,15 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
+    "@interview/shared": "file:../shared",
+    "@tailwindcss/postcss": "^4.2.2",
+    "clsx": "^2.1.1",
+    "postcss": "^8.5.8",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^7.13.2"
+    "react-router-dom": "^7.13.2",
+    "tailwindcss": "^4.2.2",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",

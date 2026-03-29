@@ -50,7 +50,7 @@ describe('<App />', () => {
     );
     await waitFor(() => expect(screen.queryByText('Loading…')).not.toBeInTheDocument());
 
-    await userEvent.type(screen.getByLabelText('item-name'), 'eggs');
+    await userEvent.type(screen.getByLabelText('New item name'), 'eggs');
     await userEvent.click(screen.getByRole('button', { name: 'Add' }));
 
     expect(await screen.findByText('eggs')).toBeInTheDocument();
@@ -85,7 +85,7 @@ describe('<App />', () => {
       expect(screen.queryByText('Loading…')).not.toBeInTheDocument(),
     );
 
-    await userEvent.type(screen.getByLabelText('item-name'), 'bread');
+    await userEvent.type(screen.getByLabelText('New item name'), 'bread');
     await userEvent.click(screen.getByRole('button', { name: 'Add' }));
 
     expect(await screen.findByRole('alert')).toHaveTextContent(
