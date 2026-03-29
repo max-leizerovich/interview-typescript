@@ -1,6 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
+import { MemoryRouter } from 'react-router-dom';
 import { App } from './App';
 
 type MockFetchResponse = {
@@ -26,7 +27,11 @@ describe('<App />', () => {
       items: [{ id: '1', name: 'milk', createdAt: new Date().toISOString() }],
     });
 
-    render(<App />);
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
     expect(screen.getByText('Loading…')).toBeInTheDocument();
 
     expect(await screen.findByText('milk')).toBeInTheDocument();
@@ -38,7 +43,11 @@ describe('<App />', () => {
       item: { id: '1', name: 'eggs', createdAt: new Date().toISOString() },
     });
 
-    render(<App />);
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
     await waitFor(() => expect(screen.queryByText('Loading…')).not.toBeInTheDocument());
 
     await userEvent.type(screen.getByLabelText('item-name'), 'eggs');
@@ -52,7 +61,11 @@ describe('<App />', () => {
   test('shows error on load failure', async () => {
     (global.fetch as jest.Mock).mockResolvedValueOnce({ ok: false });
 
-    render(<App />);
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
 
     expect(await screen.findByRole('alert')).toHaveTextContent(
       'Could not load items',
@@ -63,7 +76,11 @@ describe('<App />', () => {
     mockFetchOnce({ items: [] });
     (global.fetch as jest.Mock).mockResolvedValueOnce({ ok: false });
 
-    render(<App />);
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>,
+    );
     await waitFor(() =>
       expect(screen.queryByText('Loading…')).not.toBeInTheDocument(),
     );
