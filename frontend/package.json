@@ -14,7 +14,6 @@
   "dependencies": {
     "@interview/shared": "file:../shared",
     "@tailwindcss/postcss": "^4.2.2",
-    "clsx": "^2.1.1",
     "postcss": "^8.5.8",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

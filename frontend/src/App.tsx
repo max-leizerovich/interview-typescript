@@ -1,18 +1,10 @@
-import clsx from 'clsx';
 import { NavLink, Route, Routes } from 'react-router-dom';
 import { AboutPage } from './pages/AboutPage';
 import { ItemsPage } from './pages/ItemsPage';
+import './App.css';
 
 const getNavLinkClassName = ({ isActive }: { isActive: boolean }) =>
-  clsx(
-    'rounded-md px-3 py-1.5 text-sm no-underline transition-colors outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900',
-    {
-      'bg-blue-600/10 text-blue-600 dark:bg-blue-500/15 dark:text-blue-400':
-        isActive,
-      'text-zinc-500 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100':
-        !isActive,
-    },
-  );
+  `app-nav-link ${isActive ? 'app-nav-link--active' : 'app-nav-link--inactive'}`;
 
 /**
  * Root layout and client-side routes for the interview demo app.
